@@ -131,7 +131,7 @@ def cutwp_prop2(coord, ends):
             while(i < len(ends) - 1 and ((np.any(w[:, 0]==ends[i, 0]) and np.any(w[:, 0]==ends[i, 1])) or (not (np.any(w[:, 0]==ends[i, 0])) and (not np.any(w[:, 0]==ends[i, 1]))))):
                 i = i+1
             sn = int(ends[i, 0]) - 1
-            fn = int(ends[i, 0]) - 1
+            fn = int(ends[i, 1]) - 1
             po = ((coord[sn, 0]-xs)*(coord[fn, 1]-ys)-(coord[fn, 0]-xs)*(coord[sn, 1]-ys))/L[i]  
             if w[sn, 0] == 0:
                 w[sn, 0] = sn+1
