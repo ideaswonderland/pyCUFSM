@@ -128,17 +128,17 @@ def cutwp_prop2(coord, ends):
         #Compute unit warping
         for m in range(nele):
             i = 0
-            while(i < len(ends) - 1 and ((np.any(w[:, 0]==ends[i, 0]) and np.any(w[:, 0]==ends[i, 1])) or (not (np.any(w[:, 0]==ends[i, 0])) and (not np.any(w[:, 0]==ends[i, 1]))))):
+            while(i < len(ends) - 1 and ((np.any(wo[:, 0]==ends[i, 0]) and np.any(wo[:, 0]==ends[i, 1])) or (not (np.any(wo[:, 0]==ends[i, 0])) and (not np.any(wo[:, 0]==ends[i, 1]))))):
                 i = i+1
             sn = int(ends[i, 0]) - 1
-            fn = int(ends[i, 0]) - 1
+            fn = int(ends[i, 1]) - 1
             po = ((coord[sn, 0]-xs)*(coord[fn, 1]-ys)-(coord[fn, 0]-xs)*(coord[sn, 1]-ys))/L[i]  
-            if w[sn, 0] == 0:
-                w[sn, 0] = sn+1
-                w[sn, 1] = w[fn, 1]-po*L[i]
-            elif w[fn, 0] == 0:
-                w[fn, 0] = fn+1
-                w[fn, 1] = w[sn, 1]+po*L[i]
+            if wo[sn, 0] == 0:
+                wo[sn, 0] = sn+1
+                wo[sn, 1] = wo[fn, 1]-po*L[i]
+            elif wo[fn, 0] == 0:
+                wo[fn, 0] = fn+1
+                wo[fn, 1] = wo[sn, 1]+po*L[i]
             wno = wno + 1/(2*A)*(wo[sn, 1]+wo[fn, 1])*t[i]*L[i]
         wn = np.zeros((len(wo), 2))
         wn = wno - wo[:, 1]
